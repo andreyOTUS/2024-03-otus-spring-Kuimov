@@ -5,7 +5,7 @@
 out
 *.mvn
 *.class
-
+*.ipr
 # Maven
 log/
 target/
