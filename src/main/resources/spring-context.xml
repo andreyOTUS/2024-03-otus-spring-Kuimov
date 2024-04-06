@@ -6,7 +6,12 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="ioService" class="ru.otus.hw.service.StreamsIOService">
+    <bean id="testFileNameProvider" class="ru.otus.hw01.config.AppProperties">
+        <constructor-arg value="studentsTest.csv"/>
+    </bean>
+
+
+    <bean id="ioService" class="ru.otus.hw01.service.IOStreamsService">
         <constructor-arg index="0">
             <util:constant static-field="java.lang.System.out"/>
         </constructor-arg>

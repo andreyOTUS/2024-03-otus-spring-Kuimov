@@ -1,8 +1,8 @@
-package ru.otus.hw.dao;
+package ru.otus.hw01.dao;
 
 import lombok.RequiredArgsConstructor;
-import ru.otus.hw.config.TestFileNameProvider;
-import ru.otus.hw.domain.Question;
+import ru.otus.hw01.config.TestFileNameProvider;
+import ru.otus.hw01.domain.Question;
 
 import java.util.ArrayList;
 import java.util.List;
