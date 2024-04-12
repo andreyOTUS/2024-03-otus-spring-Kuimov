@@ -14,3 +14,4 @@ public class AppProperties implements TestFileNameProvider {
         return testFileName;
     }
 }
+

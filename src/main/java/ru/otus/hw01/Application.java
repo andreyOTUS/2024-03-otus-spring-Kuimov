@@ -1,7 +1,7 @@
 package ru.otus.hw01;
 
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.otus.hw01.config.AppProperties;
 import ru.otus.hw01.service.TestRunnerService;
 
 public class Application {
