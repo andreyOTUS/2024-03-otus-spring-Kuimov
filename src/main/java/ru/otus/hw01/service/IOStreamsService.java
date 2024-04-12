@@ -1,8 +1,7 @@
 package ru.otus.hw01.service;
 
-import lombok.AllArgsConstructor;
-
 import java.io.PrintStream;
+
 public class IOStreamsService implements IOService {
     private final PrintStream printStream;
 

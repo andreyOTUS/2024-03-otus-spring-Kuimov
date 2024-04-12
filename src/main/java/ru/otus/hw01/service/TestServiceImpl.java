@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import ru.otus.hw01.dao.QuestionDao;
 import ru.otus.hw01.domain.Question;
 
-import java.util.List;
-
 @AllArgsConstructor
 public class TestServiceImpl implements TestService {
 

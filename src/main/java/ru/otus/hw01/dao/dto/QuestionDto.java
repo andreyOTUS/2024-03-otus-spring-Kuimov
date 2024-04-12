@@ -1,8 +1,6 @@
 package ru.otus.hw01.dao.dto;
 
-import com.opencsv.bean.CsvBindAndSplitByName;
 import com.opencsv.bean.CsvBindAndSplitByPosition;
-import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 import lombok.Data;
 import ru.otus.hw01.domain.Answer;
