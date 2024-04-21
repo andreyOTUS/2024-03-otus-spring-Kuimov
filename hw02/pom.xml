@@ -108,7 +108,7 @@
                 <!--Настроить для создания jar с зависимостями-->
                 <executions>
                     <execution>
-                        <id>hw_01</id>
+                        <id>hw_02</id>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>

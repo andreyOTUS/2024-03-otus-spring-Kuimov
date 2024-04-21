@@ -4,7 +4,7 @@ import com.opencsv.bean.CsvBindAndSplitByPosition;
 import com.opencsv.bean.CsvBindByPosition;
 import lombok.Data;
 import ru.otus.hw02.domain.Answer;
-import ru.otus.hw02.domain.Question;
+import ru.otus.hw02.domain.QuestionsAnswers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +19,8 @@ public class QuestionDto {
             converter = AnswerCsvConverter.class, splitOn = "\\|")
     private List<Answer> answers;
 
-    public Question toDomainObject() {
-        return new Question(text, answers);
+    public QuestionsAnswers toDomainObject() {
+        return new QuestionsAnswers(text, answers);
     }
 }
 

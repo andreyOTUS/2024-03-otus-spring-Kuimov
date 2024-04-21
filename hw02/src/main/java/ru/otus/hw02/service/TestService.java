@@ -1,6 +1,8 @@
 package ru.otus.hw02.service;
 
-public interface TestService {
+import ru.otus.hw02.domain.Student;
+import ru.otus.hw02.domain.TestResult;
 
-    void executeTest();
+public interface TestService {
+    TestResult executeTestFor(Student student);
 }
