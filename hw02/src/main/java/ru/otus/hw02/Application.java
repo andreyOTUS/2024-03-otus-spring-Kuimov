@@ -2,7 +2,6 @@ package ru.otus.hw02;
 
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.otus.hw02.service.TestRunnerService;
 
 public class Application {

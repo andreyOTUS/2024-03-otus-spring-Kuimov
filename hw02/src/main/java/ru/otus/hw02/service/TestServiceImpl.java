@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.otus.hw02.dao.QuestionDao;
 import ru.otus.hw02.domain.Answer;
-import ru.otus.hw02.domain.QuestionsAnswers;
 import ru.otus.hw02.domain.Student;
 import ru.otus.hw02.domain.TestResult;
 
@@ -13,6 +12,10 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class TestServiceImpl implements TestService {
+
+    private static final String QUESTION_FOR_ANSWER = "What is the correct answer? Enter the number: ";
+
+    private static final String ANSWER = "Upss...Incorrect number. Try one more!";
 
     private final IOService ioService;
 
@@ -25,20 +28,18 @@ public class TestServiceImpl implements TestService {
         var questions = questionDao.findAll();
         var testResult = new TestResult(student);
 
-        for (QuestionsAnswers questionsAnswers : questions) {
+        for (var questionsAnswers : questions) {
             List<Answer> answers = questionsAnswers.answers();
             ioService.printLine(questionsAnswers.text());
             int correctAnswer = 0;
-            int i = 0;
-            while (i < answers.size()) {
+            for (int i = 0; i < answers.size(); i++) {
                 Answer answer = answers.get(i);
                 ioService.printFormattedLine("%d. %s", i + 1, answer.text());
                 if (answer.isCorrect()) {
                     correctAnswer = i + 1;
                 }
-                i++;
             }
-            int number = ioService.readIntForRangeWithPrompt(1, answers.size(), "What is the correct answer? Enter the number: ", "Upss...Incorrect number. Try one more!");
+            int number = ioService.readIntForRangeWithPrompt(1, answers.size(), QUESTION_FOR_ANSWER, ANSWER);
             boolean isAnswerValid; // Задать вопрос, получить ответ
             isAnswerValid = number == correctAnswer;
             testResult.applyAnswer(questionsAnswers, isAnswerValid);

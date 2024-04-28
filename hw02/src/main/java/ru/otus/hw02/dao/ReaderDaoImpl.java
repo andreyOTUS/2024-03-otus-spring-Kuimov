@@ -1,8 +1,6 @@
 package ru.otus.hw02.dao;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import ru.otus.hw02.config.TestFileNameProvider;
 
 import java.io.BufferedReader;
