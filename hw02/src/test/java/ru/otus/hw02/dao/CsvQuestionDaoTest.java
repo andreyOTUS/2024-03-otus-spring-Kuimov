@@ -1,5 +1,6 @@
 package ru.otus.hw02.dao;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -22,32 +23,39 @@ class CsvQuestionDaoTest {
 
     @Mock
     ReaderDao reader;
-    private QuestionDao dao;
-
-    @BeforeEach
-    void setUp() {
-        dao = new QuestionDaoCsv(reader, ';', 1);
-    }
 
     @DisplayName("Должен выдать ошибку на пустой InputStream")
     @Test
     void shouldThrowQuestionReadExceptionException() {
+        QuestionDao dao = new QuestionDaoCsv(reader, ';', 1);
         assertThrows(QuestionReadException.class, dao::findAll);
     }
+
+    @DisplayName("Проверка на разделитель")
     @Test
     void shouldThrowQuestionReadExceptionException2() {
-        QuestionDaoCsv csvQuestionDao = new QuestionDaoCsv(reader, '-', 1);
-        assertThrows(QuestionReadException.class, csvQuestionDao::findAll);
+        // prepare
+        FIleProvider reader1 = new FIleProvider();
+        QuestionDaoCsv csvQuestionDao = new QuestionDaoCsv(reader1, '-', 1);
+        Assertions.assertNotEquals("[QuestionsAnswers[text=Is there life on Mars?, answers=[Answer" +
+                        "[text=Science doesn't know this yet," +
+                        " isCorrect=true], Answer[text=Certainly. The red UFO is from Mars. And green is from Venus, " +
+                        "isCorrect=false], Answer[text=Absolutely not, isCorrect=false]]], QuestionsAnswers[text=How should " +
+                        "resources be loaded form jar in Java?, answers=[Answer[text=ClassLoader#geResourceAsStream or " +
+                        "ClassPathResource#getInputStream, isCorrect=true], Answer[text=ClassLoader#geResource#getFile" +
+                        " + FileReader, isCorrect=false], Answer[text=Wingardium Leviosa, isCorrect=false]]], " +
+                        "QuestionsAnswers[text=Which option is a good way to handle the exception?, " +
+                        "answers=[Answer[text=@SneakyThrow, isCorrect=false], Answer[text=e.printStackTrace(), " +
+                        "isCorrect=false], Answer[text=Rethrow with wrapping in business exception (for example, " +
+                        "QuestionReadException), isCorrect=true], Answer[text=Ignoring exception, isCorrect=false]]]]",
+                csvQuestionDao.findAll().toString());
     }
-
+    @DisplayName("Общие проверки")
     @Test
     void wellDone() {
         // prepare
         FIleProvider reader1 = new FIleProvider();
-        QuestionDaoCsv csvQuestionDao = new QuestionDaoCsv(reader1,
-                ';',
-                1
-        );
+        QuestionDaoCsv csvQuestionDao = new QuestionDaoCsv(reader1, ';', 1);
 
         // act
         List<QuestionsAnswers> questions = csvQuestionDao.findAll();
